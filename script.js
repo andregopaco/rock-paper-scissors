@@ -1,21 +1,26 @@
 // console.log("Hello world!");
 
 // Create an array with the three possible answers;
-const choices = ['rock', 'paper', 'scissors'];
+const choicesList = ['rock', 'paper', 'scissors'];
 
 // Make the computer randomly pick one of those answers;
 function computerPlay() {
-  let randomNumber = Math.floor(Math.random()*choices.length);
-  let computerChoice = choices[randomNumber];
+  let randomNumber = Math.floor(Math.random()*choicesList.length);
+  let computerChoice = choicesList[randomNumber];
 //   console.log(computerChoice);
   return computerChoice;
 }
 
 // The player shall input his/her option;
-// function playerPlay() {
-//     playerChoice = prompt("Rock, paper or scissors?").toLowerCase;
-//     return playerChoice
-// }
+function playerPlay() {
+  let playerChoice = prompt("Choose one: rock, paper or scissors?").toLowerCase;
+  if (choicesList.includes(playerChoice)) {
+    return playerChoice;
+  } else {
+    prompt("Answer invalid");
+    playerPlay();
+  }   
+}
 
 // Both answers are compared; If the answers are the same, it's a tie;
 // Else (answers are different): 
@@ -44,8 +49,27 @@ function playRound (playerSelection, computerSelection) {
 }
 
 function game() {
-  const playerSelection = "scissors";
-  const computerSelection = computerPlay();
+  let keepGoing = true;
+  
+  while (keepGoing) {
+    let playerScore = 0;
+    let computerScore = 0;
 
-  console.log(playRound(playerSelection, computerSelection));
+    let playerSelection = playerPlay();
+    let computerSelection = computerPlay();
+
+    let roundResult = playRound(playerSelection, computerSelection);
+    console.log(roundResult);
+
+    if (roundResult.includes('win')) {
+      playerScore++;
+    } else if (roundResult.includes('lose')) {
+      computerScore++;
+    }
+
+    if (computerScore === 5 || playerScore === 5) {
+      console.log(`You've reached the end of this game. The final score is: \nPlayer: ${playerScore} x Computer: ${computerScore}.`)
+      keepGoing = false;
+    }
+  }
 }
