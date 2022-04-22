@@ -1,11 +1,13 @@
 // console.log("Hello world!");
 
 // Create an array with the three possible answers;
-const choices = ['Rock', 'Paper', 'Scissors']
+const choices = ['Rock', 'Paper', 'Scissors'];
 
 // Make the computer randomly pick one of those answers;
 function computerPlay() {
-  
+  let randomNumber = Math.floor(Math.random()*choices.length);
+  let computerChoice = choices[randomNumber];
+  console.log(computerChoice);
 }
 
 // The player shall input his/her option;
