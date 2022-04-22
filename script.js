@@ -11,6 +11,7 @@ function computerPlay() {
 }
 
 // The player shall input his/her option;
+// FIX THIS - WHEN ELSE RUNS A BUG IS TRIGGERED ON LINE 67 AND THE COMPUTERPLAY FUNCTION GETS 'DELAYED'
 function playerPlay() {
   playerChoice = prompt("Choose one: rock, paper or scissors?").toLowerCase();
   if (choicesList.includes(playerChoice)) {
@@ -40,7 +41,7 @@ function playRound (playerSelection, computerSelection) {
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
       return "You lose. Paper beats Rock." 
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-      return "You lose. Scirssors beats Paper." 
+      return "You lose. Scissors beats Paper." 
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
       return "You lose. Rock beats Scissors." 
     }
@@ -50,10 +51,10 @@ function playRound (playerSelection, computerSelection) {
 
 function game() {
   let keepGoing = true;
+  let playerScore = 0;
+  let computerScore = 0;
 
   while (keepGoing) {
-    let playerScore = 0;
-    let computerScore = 0;
 
     let playerSelection = playerPlay();
     console.log(playerSelection);
@@ -62,19 +63,18 @@ function game() {
 
     let roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult);
-
-    if (computerScore === 5 || playerScore === 5) {
-        console.log(`You've reached the end of this game. The final score is: \nPlayer: ${playerScore} x Computer: ${computerScore}.`)
-        keepGoing = false;
-    } 
     
     if (roundResult.includes('win')) {
-      playerScore += 1;
+      playerScore++;
     } else if (roundResult.includes('lose')) {
       computerScore += 1;
     }
-    console.log(`Player: ${playerScore} x Computer: ${computerScore}.`)
 
+    if (computerScore === 5 || playerScore === 5) {
+      console.log(`You've reached the end of this game. The final score is: \nPlayer: ${playerScore} x Computer: ${computerScore}.`)
+      keepGoing = false;
+    } else {
+      console.log(`Player: ${playerScore} x Computer: ${computerScore}.`)
+    }
   }
-
 }
