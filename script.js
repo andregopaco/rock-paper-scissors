@@ -11,14 +11,16 @@ function computerPlay() {
 }
 
 // The player shall input his/her option;
-// FIX THIS - WHEN ELSE RUNS A BUG IS TRIGGERED ON LINE 67 AND THE COMPUTERPLAY FUNCTION GETS 'DELAYED'
 function playerPlay() {
-  playerChoice = prompt("Choose one: rock, paper or scissors?").toLowerCase();
-  if (choicesList.includes(playerChoice)) {
-    return playerChoice;
-  } else {
+  let choiceNotListed = true;
+  while (choiceNotListed) {
+    playerChoice = prompt("Choose one: rock, paper or scissors?").toLowerCase();
+    if (choicesList.includes(playerChoice)) {
+      choiceNotListed = false;
+      return playerChoice;
+    } else {
     alert("Answer invalid");
-    playerPlay();
+    }
   }   
 }
 
