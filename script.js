@@ -7,17 +7,16 @@ const choicesList = ['rock', 'paper', 'scissors'];
 function computerPlay() {
   let randomNumber = Math.floor(Math.random()*choicesList.length);
   let computerChoice = choicesList[randomNumber];
-//   console.log(computerChoice);
   return computerChoice;
 }
 
 // The player shall input his/her option;
 function playerPlay() {
-  let playerChoice = prompt("Choose one: rock, paper or scissors?").toLowerCase;
+  playerChoice = prompt("Choose one: rock, paper or scissors?").toLowerCase();
   if (choicesList.includes(playerChoice)) {
     return playerChoice;
   } else {
-    prompt("Answer invalid");
+    alert("Answer invalid");
     playerPlay();
   }   
 }
@@ -48,28 +47,34 @@ function playRound (playerSelection, computerSelection) {
   }
 }
 
+
 function game() {
   let keepGoing = true;
-  
+
   while (keepGoing) {
     let playerScore = 0;
     let computerScore = 0;
 
     let playerSelection = playerPlay();
+    console.log(playerSelection);
     let computerSelection = computerPlay();
+    console.log(computerSelection);
 
     let roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult);
 
-    if (roundResult.includes('win')) {
-      playerScore++;
-    } else if (roundResult.includes('lose')) {
-      computerScore++;
-    }
-
     if (computerScore === 5 || playerScore === 5) {
-      console.log(`You've reached the end of this game. The final score is: \nPlayer: ${playerScore} x Computer: ${computerScore}.`)
-      keepGoing = false;
+        console.log(`You've reached the end of this game. The final score is: \nPlayer: ${playerScore} x Computer: ${computerScore}.`)
+        keepGoing = false;
+    } 
+    
+    if (roundResult.includes('win')) {
+      playerScore += 1;
+    } else if (roundResult.includes('lose')) {
+      computerScore += 1;
     }
+    console.log(`Player: ${playerScore} x Computer: ${computerScore}.`)
+
   }
+
 }
