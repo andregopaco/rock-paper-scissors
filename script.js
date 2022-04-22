@@ -12,12 +12,22 @@ function computerPlay() {
 
 // The player shall input his/her option;
 
-
-// Both answers are compared;
-
-// If the answers are the same, it's a tie;
-
-// Else (answers are different)
+// Both answers are compared; If the answers are the same, it's a tie;
+// Else (answers are different): 
 // If player choice is rock it wins if computer picks scissors; otherwise player loses;
 // If player choice is paper it wins if computer picks rock; otherwise player lose;
 // If player choice is scissors it wins if computer picks paper; otherwise player lose;
+
+function playRound (playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return "It's a tie"
+  } else {
+    if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
+      return "You win! Rock beats Scissors."
+    } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
+      return "You win! Paper beats Rock." 
+    } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
+      return "You win! Scissors beat Paper."
+    }
+  }
+}
