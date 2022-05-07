@@ -51,32 +51,46 @@ function playRound (playerSelection, computerSelection) {
 }
 
 
-function game() {
-  let keepGoing = true;
-  let playerScore = 0;
-  let computerScore = 0;
+// function game() {
+//   let keepGoing = true;
+//   let playerScore = 0;
+//   let computerScore = 0;
 
-  while (keepGoing) {
+//   while (keepGoing) {
 
-    let playerSelection = playerPlay();
+//     let playerSelection = playerPlay();
+//     console.log(playerSelection);
+//     let computerSelection = computerPlay();
+//     console.log(computerSelection);
+
+//     let roundResult = playRound(playerSelection, computerSelection);
+//     console.log(roundResult);
+    
+//     if (roundResult.includes('win')) {
+//       playerScore++;
+//     } else if (roundResult.includes('lose')) {
+//       computerScore += 1;
+//     }
+
+//     if (computerScore === 5 || playerScore === 5) {
+//       console.log(`You've reached the end of this game. The final score is: \nPlayer: ${playerScore} x Computer: ${computerScore}.`)
+//       keepGoing = false;
+//     } else {
+//       console.log(`Player: ${playerScore} x Computer: ${computerScore}.`)
+//     }
+//   }
+// }
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    let playerSelection = button.id;
     console.log(playerSelection);
     let computerSelection = computerPlay();
     console.log(computerSelection);
-
     let roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult);
-    
-    if (roundResult.includes('win')) {
-      playerScore++;
-    } else if (roundResult.includes('lose')) {
-      computerScore += 1;
-    }
+  });
+});
 
-    if (computerScore === 5 || playerScore === 5) {
-      console.log(`You've reached the end of this game. The final score is: \nPlayer: ${playerScore} x Computer: ${computerScore}.`)
-      keepGoing = false;
-    } else {
-      console.log(`Player: ${playerScore} x Computer: ${computerScore}.`)
-    }
-  }
-}
