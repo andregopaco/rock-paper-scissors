@@ -81,16 +81,18 @@ function playRound (playerSelection, computerSelection) {
 //   }
 // }
 
+const resultDiv = document.querySelector('.gameResult');
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     let playerSelection = button.id;
-    console.log(playerSelection);
     let computerSelection = computerPlay();
-    console.log(computerSelection);
     let roundResult = playRound(playerSelection, computerSelection);
-    console.log(roundResult);
+    resultDiv.textContent = `You choose ${playerSelection}. The computer chooses ${computerSelection}.
+    ${roundResult}`;
   });
 });
+
+
 
