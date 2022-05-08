@@ -8,20 +8,20 @@ function computerPlay() {
 
 function playRound (playerSelection, computerSelection) {  
   if (playerSelection === computerSelection) {
-    return "It's a tie"
+    return "It's a tie."
   } else {
     if (playerSelection === 'rock' && computerSelection === 'scissors') {
-      return "You win! Rock beats Scissors."
+      return "You win!"
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-      return "You win! Paper beats Rock." 
+      return "You win!" 
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-      return "You win! Scissors beat Paper."
+      return "You win!"
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-      return "You lose. Paper beats Rock." 
+      return "You lose." 
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-      return "You lose. Scissors beats Paper." 
+      return "You lose." 
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-      return "You lose. Rock beats Scissors." 
+      return "You lose." 
     }
   }
 }
@@ -43,13 +43,17 @@ buttons.forEach((button) => {
       computerScore += 1;
     }
 
-    div.textContent = `You choose ${playerSelection}. The computer chooses ${computerSelection}. ${roundResult}. Current score: player: - ${playerScore} x computer: ${computerScore}`;
+    div.textContent = `You choose ${playerSelection}. The computer chooses ${computerSelection}. ${roundResult} Current score: player: ${playerScore} x computer: ${computerScore}. `;
 
       // TODO: append score on page;
     if (playerScore === 5) {
-      div.textContent += ` You win the game!`;
+      div.textContent += `Victory is yours! Yay!`;
+      playerScore = 0;
+      computerScore = 0;
     } else if (computerScore === 5) {
-      div.textContent = `You lost the game.`;
+      div.textContent += `Game over. :(`;
+      playerScore = 0;
+      computerScore = 0;
     }
   });
 });
